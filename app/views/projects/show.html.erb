@@ -84,7 +84,7 @@
       <p  style="margin-bottom:10px"><b>Resources:</b></p>
       <div class="resource-list">
         <ul>
-          <% @project.project_attachments.sort { |a,b| a.position < b.position }.each_with_index do |pa, i| %>
+          <% @project.project_attachments.each_with_index do |pa, i| %>
               <li class="resource text-center">
               <% if pa.project_attachment_type %>
                 <div style="maring-bottom:5px;"><%= pa.project_attachment_type.name %>:</div>

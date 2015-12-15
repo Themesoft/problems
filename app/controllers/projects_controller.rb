@@ -45,14 +45,16 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
-    @project = Project.new(project_params)
 
     # Update params for position
     project_attachments_attr = params[:project][:project_attachments_attributes]
 
     project_attachments_attr.each_with_index do |att_index, index|
       att_index[1][:position] = index
+      puts "INDEX:::: #{att_index[1][:position].inspect}"
     end
+
+    @project = Project.new(project_params)
 
     respond_to do |format|
       if @project.save
@@ -113,6 +115,7 @@ class ProjectsController < ApplicationController
     # params.require(:person).permit(:name, :age)
     # Also, you can specialize this method with per-user checking of permissible attributes.
     def project_params
-      params.require(:project).permit(:name, :status, :user_id, :content, :type_id, :why, :duration, :launch_method, :teacher_moves, :solution,  :problem_statement, :author_name, :author_link, {tag_ids: []}, {standard_ids: []}, :history, :pathways, :extensions, :hints, :featured_image, :remove_featured_image, :featured_image_cache, {project_attachments_attributes: [:project_attachment_type_id, :resource, :_delete, :id, :title, :position]})
+      params.require(:project).permit(:name, :status, :user_id, :content, :type_id, :why, :duration, :launch_method, :teacher_moves, :solution,  :problem_statement, :author_name, :author_link, {tag_ids: []}, {standard_ids: []}, :history, :pathways, :extensions, :hints, :featured_image, :remove_featured_image, :featured_image_cache,
+      {project_attachments_attributes: [:project_attachment_type_id, :resource, :_delete, :id, :title, :position]})
     end
 end
