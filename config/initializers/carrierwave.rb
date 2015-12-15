@@ -2,8 +2,6 @@ if Rails.env.production?
   bucket = 'problembankimages'
 else
   bucket = 'problembankimagesdev'
-  ENV['AWS_PROBLEM_KEY_ID'] = 'TEST'
-  ENV['AWS_PROBLEM_SECRET_ACCESS_KEY'] = 'TEST'
 end
 
 CarrierWave.configure do |config|
