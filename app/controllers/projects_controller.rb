@@ -94,11 +94,12 @@ class ProjectsController < ApplicationController
 
   private
     def create_attachments
-      params[:project_attachments_attributes].each do |project_attachment_attributes|
+      params[:project_attachments_attributes].each_with_index do |project_attachment_attributes, index|
         @project_attachment = @project.project_attachments.create!(
                                     :resource => project_attachment_attributes[:resource],
                                     :project_attachment_type_id => project_attachment_attributes[:project_attachment_type_id].to_i,
-                                    :project_id => @project.id)
+                                    :project_id => @project.id,
+                                    :position => index)
       end
     end
 
