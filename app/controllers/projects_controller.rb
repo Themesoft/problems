@@ -49,10 +49,16 @@ class ProjectsController < ApplicationController
     # Update params for position
     project_attachments_attr = params[:project][:project_attachments_attributes]
 
-    project_attachments_attr.each_with_index do |att_index, index|
-      att_index[1][:position] = index
-      puts "INDEX:::: #{att_index[1][:position].inspect}"
+    puts "-------------"
+    puts project_attachments_attr
+    puts "-------------"
+
+      project_attachments_attr.each_with_index do |att_index, index|
+        att_index[1][:position] = index
+        puts "INDEX:::: #{att_index[1][:position].inspect}"
+      end
     end
+
 
     @project = Project.new(project_params)
 
