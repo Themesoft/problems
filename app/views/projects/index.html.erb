@@ -1,5 +1,14 @@
+<%= simple_form_for :search,
+:name => 'q',
+:id => 'search',
+:url => url_for(:action => 'home', :controller => 'pages'),
+:method => 'get' do |f| %>
+<%= f.input :terms, label: false, input_html: { class: "u-full-width" } %>
+<%= f.button :submit, "Search" %>
+
 <div class="main">
   <h1>The List</h1>
+<% end %>
   <div class = "first"> <!--Published Problems-->
     <h2>Published Problems</h2>
 

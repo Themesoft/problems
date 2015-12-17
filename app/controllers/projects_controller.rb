@@ -15,6 +15,9 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
+    @feature_order = (@project.feature_order || "0123").chars.map do |id|
+      partial_from_id(id)
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -123,7 +126,7 @@ class ProjectsController < ApplicationController
       {project_attachments_attributes: [:project_attachment_type_id, :resource, :_delete, :id, :title, :position]})
     end
 
-    def section_for_id (id)
+    def partial_from_id (id)
       return case id
         when "0"
           "show_important"
@@ -136,4 +139,5 @@ class ProjectsController < ApplicationController
         else
           "show_important"
     end
+  end
 end
