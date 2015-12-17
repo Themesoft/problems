@@ -53,12 +53,10 @@ class ProjectsController < ApplicationController
     puts project_attachments_attr
     puts "-------------"
 
-      project_attachments_attr.each_with_index do |att_index, index|
-        att_index[1][:position] = index
-        puts "INDEX:::: #{att_index[1][:position].inspect}"
-      end
+    project_attachments_attr.each_with_index do |att_index, index|
+      att_index[1][:position] = index
+      puts "INDEX:::: #{att_index[1][:position].inspect}"
     end
-
 
     @project = Project.new(project_params)
 
