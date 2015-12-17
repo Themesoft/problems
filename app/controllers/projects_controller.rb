@@ -122,4 +122,18 @@ class ProjectsController < ApplicationController
       params.require(:project).permit(:name, :status, :user_id, :content, :type_id, :why, :duration, :launch_method, :teacher_moves, :solution,  :problem_statement, :author_name, :author_link, {tag_ids: []}, {standard_ids: []}, :history, :pathways, :extensions, :hints, :featured_image, :remove_featured_image, :featured_image_cache,
       {project_attachments_attributes: [:project_attachment_type_id, :resource, :_delete, :id, :title, :position]})
     end
+
+    def section_for_id (id)
+      return case id
+        when "0"
+          "show_important"
+        when "1"
+          "show_details"
+        when "2"
+          "show_extra"
+        when "3"
+          "show_slider"
+        else
+          "show_important"
+    end
 end
