@@ -24,6 +24,7 @@ gem 'spring',      group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem "devise"
+gem 'owlcarousel-rails'
 gem "jquery-rails"
 gem 'turbolinks'
 gem "haml", ">= 3.0.0"

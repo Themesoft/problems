@@ -15,6 +15,9 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
+    @feature_order = (@project.feature_order || "0123").chars.map do |id|
+      partial_from_id(id)
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -110,4 +113,19 @@ class ProjectsController < ApplicationController
       params.require(:project).permit(:name, :status, :user_id, :content, :type_id, :why, :duration, :launch_method, :teacher_moves, :solution,  :problem_statement, :author_name, :author_link, {tag_ids: []}, {standard_ids: []}, :history, :pathways, :extensions, :hints, :featured_image, :remove_featured_image, :featured_image_cache,
       {project_attachments_attributes: [:project_attachment_type_id, :resource, :_delete, :id, :title]})
     end
+
+    def partial_from_id (id)
+      return case id
+        when "0"
+          "show_important"
+        when "1"
+          "show_details"
+        when "2"
+          "show_extra"
+        when "3"
+          "show_slider"
+        else
+          "show_important"
+    end
+  end
 end

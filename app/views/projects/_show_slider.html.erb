@@ -1,0 +1,11 @@
+<div class="slider" movement="3">
+  <div class="owl-carousel">
+    <% @project.project_attachments.each_with_index do |pa, i| %>
+        <li class="resource text-center">
+        <%= link_to pa.resource_url, target: "_blank" do %>
+          <%= "Resource #{i+1}" %>
+        <% end %>
+        </li>
+    <% end %>
+  </div>
+</div>
