@@ -113,7 +113,6 @@
       <label>Add Attachments</label>
       <%= f.simple_fields_for :project_attachments do |builder| %>
         <div class="attachment-fields">
-          <%= builder.hidden_field :position %>
           <%= builder.input :title %>
           <%= builder.input :project_attachment_type_id, label: 'Type', collection: ProjectAttachmentType.all %>
           <%= image_tag builder.object.resource_url(:thumb) if builder.object.resource_url %>
