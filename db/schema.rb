@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151214224320) do
+ActiveRecord::Schema.define(version: 20151219185255) do
 
   create_table "login_events", force: true do |t|
     t.integer  "user_id"
@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 20151214224320) do
     t.string   "file_name"
     t.integer  "project_attachment_type_id"
     t.string   "title",                      default: ""
-    t.integer  "position"
   end
 
   create_table "projects", force: true do |t|

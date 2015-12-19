@@ -49,18 +49,6 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
 
-    # Update params for position
-    project_attachments_attr = params[:project][:project_attachments_attributes]
-
-    puts "-------------"
-    puts project_attachments_attr
-    puts "-------------"
-
-    project_attachments_attr.each_with_index do |att_index, index|
-      att_index[1][:position] = index
-      puts "INDEX:::: #{att_index[1][:position].inspect}"
-    end
-
     @project = Project.new(project_params)
 
     respond_to do |format|
@@ -123,7 +111,7 @@ class ProjectsController < ApplicationController
     # Also, you can specialize this method with per-user checking of permissible attributes.
     def project_params
       params.require(:project).permit(:name, :status, :user_id, :content, :type_id, :why, :duration, :launch_method, :teacher_moves, :solution,  :problem_statement, :author_name, :author_link, {tag_ids: []}, {standard_ids: []}, :history, :pathways, :extensions, :hints, :featured_image, :remove_featured_image, :featured_image_cache,
-      {project_attachments_attributes: [:project_attachment_type_id, :resource, :_delete, :id, :title, :position]})
+      {project_attachments_attributes: [:project_attachment_type_id, :resource, :_delete, :id, :title]})
     end
 
     def partial_from_id (id)
