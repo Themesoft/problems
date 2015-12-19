@@ -76,6 +76,15 @@ ActiveRecord::Schema.define(version: 20151219185255) do
   add_index "projects_tags", ["project_id", "tag_id"], name: "index_projects_tags_on_project_id_and_tag_id"
   add_index "projects_tags", ["tag_id", "project_id"], name: "index_projects_tags_on_tag_id_and_project_id"
 
+  create_table "slider_objects", force: true do |t|
+    t.text     "description"
+    t.string   "file_name"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "resource"
+  end
+
   create_table "standards", force: true do |t|
     t.string   "code"
     t.string   "category"

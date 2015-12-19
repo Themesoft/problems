@@ -18,6 +18,7 @@ keys
 
 /public/uploads
 
+
 # Ignore Solr data
 /solr/data
 /solr/development
