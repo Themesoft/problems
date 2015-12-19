@@ -9,9 +9,9 @@
       </ul>
     </div>
   <% end %>
-  <u><h5>The important stuff</h5></u>
 
-  <div class='row'>
+  <u><h5>The important stuff</h5></u>
+  <div class='row' movement='1'>
     <div class='twelve columns'>
         <%= f.input :status, label: 'Status', collection: Project::STATUSES.zip((0..2).to_a), input_html: { class: 'u-full-width' } %>
     </div>
@@ -39,8 +39,9 @@
     </div>
   </div>
   <hr style="border-top:4px solid black;">
+
   <u><h5>The details</h5></u>
-  <div class='row'>
+  <div class='row' movement='2'>
     <div class='six columns'>
         <%= f.input :content, label: 'Hook', placeholder: 'What\'s the best way to get the audience on the edge of their seats?', input_html: { class: 'u-full-width' } %>
     </div>
@@ -65,8 +66,9 @@
     </div>
   </div>
   <hr style="border-top:4px solid black;">
+
   <u><h5>The other stuff</h5></u>
-  <div class='row'>
+  <div class='row' movement='2'>
     <div class='six columns'>
         <%= f.input :launch_method, input_html: { class: 'textarea u-full-width', rows: 8 } %>
     </div>
@@ -91,8 +93,9 @@
     </div>
   </div>
   <hr style="border-top:4px solid black;">
+
   <u><h5>Images and Resources</h5></u>
-  <div class='row'>
+  <div class='row' movement='3'>
     <%  if @project.featured_image_url %>
       <div class='six columns form-box'>
         <div class='text-center'>

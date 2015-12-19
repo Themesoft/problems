@@ -1,0 +1,102 @@
+<% if current_user && (current_user == @project.user || current_user.admin?) %>
+  <%= link_to 'Edit', edit_project_path(@project), class: 'button u-pull-right' %>
+<% end %>
+
+<div class="row">
+  <div class="twelve columns">
+    <div class="project-header"
+    <% if @project.featured_image_url %>
+      style="background-image: url(<%= @project.featured_image_url %>);"
+    <% end %>
+    >
+      <div class="layer">
+      </div>
+    </div>
+    <div class="project-header-content">
+      <h1 style="display:inline;"> <%= @project.name %> </h1>
+      <%= image_tag(@project.featured_image_url, class: 'u-pull-right', height: '150') %>
+      <p>
+        <b>Contributor:</b> <br />
+        <%= link_to @project.author_name, @project.author_link if @project.author_link %>
+        <%= link_to @project.author_name, @project.author_link unless @project.author_link %>
+      </p>
+    </div>
+  </div>
+</div>
+<hr style='margin-bottom:0;'>
+<div class="project-body">
+  <div class="row">
+    <div class="nine columns">
+      <b>Problem Statement:</b><br/>
+      <%= simple_format(@project.problem_statement, {class: "simple_format"}, wrapper_tag: "div", sanitize: false) %>
+      <br/>
+
+      <% if @project.content %>
+        <b>Hook:</b><br/>
+        <%= simple_format(@project.content, {class: "simple_format"}, wrapper_tag: "div", sanitize: false) %>
+        <br/>
+      <% end %>
+
+      <% if @project.history %>
+        <b>History:</b><br/>
+        <%= simple_format(@project.history, {class: "simple_format"}, wrapper_tag: "div", sanitize: false) %>
+        <br/>
+      <% end %>
+
+      <% if @project.pathways %>
+        <b>Pathways:</b><br/>
+        <%= simple_format(@project.pathways, {class: "simple_format"}, wrapper_tag: "div", sanitize: false) %>
+        <br/>
+      <% end %>
+
+      <% if @project.pitfalls %>
+        <b>Pitfalls:</b><br/>
+        <%= simple_format(@project.pitfalls, {class: "simple_format"}, wrapper_tag: "div", sanitize: false) %>
+        <br/>
+      <% end %>
+
+      <% if @project.extensions %>
+        <b>Extensions:</b><br/>
+        <%= simple_format(@project.extensions, {class: "simple_format"}, wrapper_tag: "div", sanitize: false) %>
+        <br/>
+      <% end %>
+
+      <% if @project.hints %>
+        <b>Hints:</b><br/>
+        <%= simple_format(@project.hints, {class: "simple_format"}, wrapper_tag: "div", sanitize: false) %>
+        <br/>
+      <% end %>
+
+      <% if @project.teacher_moves %>
+        <b>Teacher Moves:</b><br/>
+        <%= simple_format(@project.teacher_moves, {class: "simple_format"}, wrapper_tag: "div", sanitize: false) %>
+        <br/>
+      <% end %>
+
+    </div>
+    <div class='three columns' style='padding:0 0 0 20px;'>
+      <p style="margin-bottom:10px"><b>Tags:</b></p>
+      <ul class='tags-list'>
+        <% @project.tags.each do |tag| %>
+          <li class="tag text-center title='<%= tag.name %>'"><%= tag.name %></li>
+        <% end %>
+      </ul>
+      <p  style="margin-bottom:10px"><b>Resources:</b></p>
+      <div class="resource-list">
+        <ul>
+          <% @project.project_attachments.each_with_index do |pa, i| %>
+              <li class="resource text-center">
+              <% if pa.project_attachment_type %>
+                <div style="maring-bottom:5px;"><%= pa.project_attachment_type.name %>:</div>
+                <br>
+              <% end %>
+              <%= link_to pa.resource_url, target: "_blank" do %>
+                <%= "Resource #{i+1}" %>
+              <% end %>
+              </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="deets" movement="1">
+  <h3>The Details</h3>
+  <div id="thestuff">
+    <h4>History</h4>
+    <p><%= @project.history %></p>
+  </div>
+  <div id="thestuff">
+    <h4>Standards</h4>
+    <p>
+      <% if @project.standards.length > 0 %>
+        <% @project.standards.each do |standard| %>
+          <%= standard %>
+        <% end %>
+      <$ else $>
+        No standards defined
+      <% end %>
+    </p>
+  </div>
+</div>
