@@ -1,0 +1,37 @@
+<div class="nav">
+  <div id="menu">
+    <div class="logo">
+      <a href="#">Problems</a>
+    </div>
+    <ul class="links">
+      <li>
+        <%= link_to 'My Page', user_path(current_user) if current_user%>
+      </li>
+      <ul>
+        <li>
+          <%= link_to "The List", projects_url %>
+        </li>
+        <ul>
+          <li><a href="#">Published Problems</a></li>
+          <li><a href="#">Problem Drafts</a></li>
+        </ul>
+        </li>
+      </ul>
+      <li>
+        <%= link_to 'Sign In', new_user_session_path unless current_user %>
+      </li>
+      <% if current_user %>
+        <li>
+          <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+        </li>
+        <% end %>
+    </ul>
+  </div>
+  <div class="header">
+    <ul>
+      <i class="fa fa-home fa-fw"></i>
+      <li>Dashboard /</li>
+      <li><%= link_to 'Add Problem', new_project_path, class: 'button u-pull-right u-full-width' %></li>
+    </ul>
+  </div>
+</div>

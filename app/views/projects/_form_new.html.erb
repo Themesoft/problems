@@ -1,0 +1,346 @@
+<%= simple_form_for @project, :html => { :multipart => true } do |f| %>
+  <div class="main">
+    <aside>
+      <div class="dropdown">
+        <section class="container">
+          <div class="dropdown">
+            <%= f.input :status, label: 'Status', collection: Project::STATUSES.zip((0..2).to_a), input_html: { class: 'dropdown-select', name: 'one' } %>
+          </div>
+        </section>
+      </div>
+      <div class="save">
+        <%= f.button :submit, 'Create!', class: 'button button-primary', id: 'project-button' unless @edit %>
+        <%= f.hidden_field :feature_order %>
+      </div>
+      <div class="rresources">
+        <h2>Resources</h2>
+        <div id="rslide">
+          <div id="rimagepart">
+            <img id="rupload" src="http://www.myiconfinder.com/uploads/iconsets/3bfedbeee0930699d0cda9fa740170c3-cloud.png"/>
+          </div>
+          <div class="rboxes">
+            <p>Or choose a file...</p>
+            <ul>
+              <li>Resource 1
+                <i class="fa fa-times-circle"></i>
+              </li>
+              <li>Resource 2
+                <i class="fa fa-times-circle"></i>
+              </li>
+              <li>Resource 3
+                <i class="fa fa-times-circle"></i>
+              </li>
+              <li>Resource 4
+                <i class="fa fa-times-circle"></i>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="tags">
+        <h2>Tags</h2>
+        <div class="place">
+          TAGS
+          <%= f.association :tags %>
+          <br/>
+        </div>
+      </div>
+    </aside>
+    <section>
+      <% if @project.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@project.errors.count, "error") %> prohibited this user from being saved:</h2>
+          <ul>
+          <% @project.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="important">
+        <h2>The Important Stuff
+          <i class="fa fa-arrows"></i>
+        </h2>
+        <div id="left">
+          <div id="inputs">
+            <form action="#" method="post" name="things">
+              <div id="fill">
+                NAME OF PROBLEM
+                <%= f.input :name %>
+                <br/>
+              </div>
+              <div id="fill">
+                CONTRIBUTOR NAME
+                <%= f.input :author_name %>
+                <br/>
+              </div>
+              <div id="big">
+                PROBLEM STATEMENT
+                <br/>
+                <%= f.input :problem_statement, placeholder: 'Give us the goods. What is the problem?' %>
+                <br/>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div id="middle">
+          <div id="inputs">
+            <form action="#" method="post" name="nameofproblem">
+              <div id="fill">
+                TYPE OF PROBLEM
+                <%= f.association :type %>
+                <br/>
+              </div>
+              <div id="fill">
+                LINK TO AUTHOR'S PAGE
+                <%= f.input :author_link %>
+                <br/>
+              </div>
+              <div id="big">
+                HOOK
+                <br/>
+                <%= f.input :content, placeholder: 'What\'s the best way to get the audience on the edge of their seats?' %>
+                <br/>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div id="right">
+          FEATURED IMAGE
+          <img id="picimgb" src="http://innosoft.com.sa/wp-content/uploads/2014/03/placeholder.png"/>
+          <div class="bicons">
+            <p>Filename.ext
+              <i class="fa fa-trash-o"></i>
+              <i class="fa fa-pencil"></i>
+              <i class="fa fa-cloud-upload"></i>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="deets">
+        <h2>The Details
+          <i class="fa fa-arrows"></i>
+        </h2>
+        <i class="icon-move"></i>
+        <div id="left">
+          <div id="medium">
+            <form action="#" method="post" name="things">
+              <div id="inputs">
+                HISTORY
+                <%= f.input :history  %>
+                <br/>
+              </div>
+            </form>
+          </div>
+          <div id="medium">
+            <form action="#" method="post" name="things">
+              <div id="inputs">
+                WHY WILL WE LOVE IT?
+                <%= f.input :why %>
+                <br/>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div id="middle">
+          <div id="medium">
+            <form action="#" method="post" name="things">
+              <div id="inputs">
+                DURATION
+                <%= f.input :duration %>
+                <br/>
+              </div>
+            </form>
+          </div>
+          <div id="medium">
+            <form action="#" method="post" name="things">
+              <div id="inputs">
+                STANDARDS
+                <%= f.association :standards%>
+                <br/>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div id="right-short">
+          <div id="medium">
+            <form action="#" method="post" name="things">
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="autre">
+        <h2>The Other Stuff
+          <i class="fa fa-arrows"></i>
+        </h2>
+        <div id="left">
+          <div id="medium">
+            <form action="#" method="post" name="things">
+              <div id="inputs">
+                LAUNCH METHOD
+                <%= f.input :launch_method %>
+                <br/>
+              </div>
+            </form>
+          </div>
+          <div id="medium">
+            <form action="#" method="post" name="things">
+              <div id="inputs">
+                TEACHER MOVES
+                <%= f.input :teacher_moves %>
+                <br/>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div id="middle">
+          <div id="medium">
+            <form action="#" method="post" name="things">
+              <div id="inputs">
+                HISTORY
+                <%= f.input :history %>
+                <br/>
+              </div>
+            </form>
+          </div>
+          <div id="medium">
+            <form action="#" method="post" name="things">
+              <div id="inputs">
+                PATHWAYS
+                <i class="fa fa-arrows"></i>
+                <i class="fa fa-pencil"></i>
+                <%= f.input :pathways %>
+                <br/>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div id="right">
+          <div id="mediumlong">
+            <form action="#" method="post" name="things">
+              <div id="inputs">
+                EXTENSIONS
+                <i class="fa fa-arrows"></i>
+                <i class="fa fa-pencil"></i>
+                <%= f.input :extensions %>
+                <br/>
+              </div>
+            </form>
+          </div>
+          <div id="mediumlong">
+            <form action="#" method="post" name="things">
+              <div id="inputs">
+                HINTS
+                <i class="fa fa-arrows"></i>
+                <i class="fa fa-pencil"></i>
+                <%= f.input :hints %>
+                <br/>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="last">
+      <div class="slider">
+        <h2>The Slider</h2>
+        <div id="slide">
+          <div id="imageparts">
+            SLIDE 01
+            <img id="supload" src="http://www.myiconfinder.com/uploads/iconsets/3bfedbeee0930699d0cda9fa740170c3-cloud.png"/>
+          </div>
+          <div id="caption">
+            <form action="#" method="post" name="things">
+              <div id="inputs">
+                CAPTION
+                <input name="contributor" type="text" value="describe">
+                <br/>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div id="slide">
+          <div id="imageparts">
+            SLIDE 02
+            <img id="supload" src="http://www.myiconfinder.com/uploads/iconsets/3bfedbeee0930699d0cda9fa740170c3-cloud.png"/>
+          </div>
+          <div id="caption">
+            <form action="#" method="post" name="things">
+              <div id="inputs">
+                CAPTION
+                <input name="contributor" type="text" value="describe">
+                <br/>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div id="slide">
+          <div id="imageparts">
+            SLIDE 03
+            <img id="supload" src="http://www.myiconfinder.com/uploads/iconsets/3bfedbeee0930699d0cda9fa740170c3-cloud.png"/>
+          </div>
+          <div id="caption">
+            <form action="#" method="post" name="things">
+              <div id="inputs">
+                CAPTION
+                <input name="contributor" type="text" value="describe">
+                <br/>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div id="slide">
+          <div id="imageparts">
+            SLIDE 04
+            <img id="supload" src="http://www.myiconfinder.com/uploads/iconsets/3bfedbeee0930699d0cda9fa740170c3-cloud.png"/>
+          </div>
+          <div id="caption">
+            <form action="#" method="post" name="things">
+              <div id="inputs">
+                CAPTION
+                <input name="contributor" type="text" value="describe">
+                <br/>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div id="slide">
+          <div id="imageparts">
+            SLIDE 05
+            <img id="supload" src="http://www.myiconfinder.com/uploads/iconsets/3bfedbeee0930699d0cda9fa740170c3-cloud.png"/>
+          </div>
+          <div id="caption">
+            <form action="#" method="post" name="things">
+              <div id="inputs">
+                CAPTION
+                <input name="contributor" type="text" value="describe">
+                <br/>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+<% end %>
+
+<!-- Static Modal -->
+<div class="modal modal-static fade" id="processing-modal" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="text-center">
+                    <img src="http://www.travislayne.com/images/loading.gif" class="icon" />
+                    <h4>Beaming up... </h4>
+                    <p style="color:red;">
+                      Depending on the file size this may take a minute.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

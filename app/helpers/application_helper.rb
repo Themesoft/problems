@@ -16,4 +16,12 @@ module ApplicationHelper
     end
     link_to(name, '#', class: 'add_fields', data: { id: id, fields: fields.gsub("\n", "")})
   end
+
+  def css (controller)
+    if controller == 'projects'
+      content_for(:head) { stylesheet_link_tag('bootstrap.css') }
+    else
+      content_for(:head) { stylesheet_link_tag 'skeleton.css' }
+    end
+  end
 end
