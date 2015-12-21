@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import 'proj-show';
+@import 'proj-create';
+@import 'proj-index';
+
 .project-header{
   background-size: cover;
   background-color: #FFFFFF;
@@ -76,4 +80,16 @@
     margin: 0 !important;
 }
 .modal-static .modal-content .icon {
+}
+
+body.show {
+  @include show();
+}
+
+body.create {
+  @include create();
+}
+
+body.index {
+  @include index();
 }

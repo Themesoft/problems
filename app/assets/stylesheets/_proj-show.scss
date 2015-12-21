@@ -1,0 +1,300 @@
+@mixin show() {
+  #menu {
+    /* Align links to the right*/
+    text-align: right;
+  }
+  #menu div.logo {
+    /*Problems logo position*/
+    position: absolute;
+    text-align: left;
+    top: 30px;
+    left: 0;
+  }
+
+  /*---Here begins the navigation bar stuff---*/
+  .nav {
+    border: 1px solid white;
+    margin-left: -8px;
+    margin-top: -7px;
+    margin-right: -8px;
+    padding-bottom: -5px;
+    height: 100px;
+    background-color: white;
+  }
+  .logo a {
+    /*Problems logo*/
+    font-family: "Arial", Helvetica, sans-serif;
+    font-weight: lighter;
+    color: rgb(65, 64, 66);
+    padding-left: 110px;
+    font-size: 30px;
+    text-decoration: none;
+  }
+  .links {
+    /*Shift links to the left a little*/
+    margin-right: 70px;
+  }
+  .links a {
+    color: rgb(65, 64, 66);
+    text-transform: uppercase;
+    text-align: left;
+    font-size: 10px;
+    text-decoration: none;
+    font-family: "Arial", Helvetica, sans-serif;
+    display: inline-block;
+    font-weight: lighter;
+    border: 2px solid #fff;
+    padding: 10px;
+  }
+  .header a {
+    text-decoration: none;
+    padding-right: 2px;
+  }
+  .header a:hover {
+    text-decoration: underline;
+    padding-right: 2px;
+  }
+  .header a:active {
+    text-decoration: underline;
+  }
+  .links ul {
+    display: inline;
+    margin: 0;
+    padding: 0;
+  }
+  .links ul li ul li:hover {
+    background: rgb(0, 192, 255);
+  }
+  .links a:hover {
+    background-color: rgb(137, 147, 159);
+    color: #fff;
+  }
+  .links ul li {
+    display: inline-block;
+  }
+  .links ul li:hover {
+    background: white;
+  }
+  .links ul li:hover ul {
+    display: block;
+    border: 2px solid rgb(234, 234, 234);
+  }
+  .links ul li ul {
+    position: absolute;
+    width: 150px;
+    display: none;
+  }
+  .links ul li ul li {
+    background: white;
+    display: block;
+  }
+  .links ul li ul li a {
+    display: block !important;
+  }
+  .links ul li ul li:hover {
+    background: rgb(0, 192, 255);
+  }
+  .nav .header ul {
+    background-color: rgb(137, 147, 159);
+    color: #5a5a5a;
+    font-size: 9.5px;
+    font-weight: lighter;
+    padding: 12px 100px;
+    text-transform: uppercase;
+  }
+  .nav .header a {
+    color: rgb(234, 234, 234);
+  }
+  .header i {
+    /*Make the icon the right color*/
+    color: white;
+  }
+  .nav li {
+    display: inline;
+    color: rgb(234, 234, 234);
+  }
+  body {
+    background-color: #fff;
+  }
+  /*----below this is not navbar stuff----*/
+  .container h2 {
+    /*Problem Name DRAFT*/
+    font-family: "Arial", Helvetica, sans-serif;
+    font-weight: lighter;
+    color: #414042;
+    margin-left: 250px;
+  }
+  .container h4 {
+    /*Contributor and Type styling*/
+    font-family: "Arial", Helvetica, sans-serif;
+    color: rgb(65, 64, 66);
+    margin-left: 250px;
+    line-height: 0.2;
+  }
+  .container h4::after {
+    /*Contributor and type info styling*/
+    content: "First Last";
+    color: #89939f;
+    font-size: 16px;
+  }
+  .container a {
+    /*styling for the edit button*/
+    font-family: "Arial", Helvetica, sans-serif;
+    font-size: 12px;
+    text-decoration: none;
+    color: white;
+    border: 1px solid #89939f;
+    padding: 5px 35px;
+    border-radius: 3px;
+    background-color: #89939f;
+    margin-left: 250px;
+  }
+  .container a:hover {
+    /*Styling for the Edit button when hovered over by the mouse*/
+    background-color: #00c0ff;
+    border: 1px solid #00c0ff;
+  }
+  .container a:active {
+    /*Change the edit button color when clicked*/
+    background-color: #fff;
+    border: 1px solid #00c0ff;
+    color: #00c0ff;
+  }
+  #picimgfe {
+    /*Positioning the image on the right*/
+    width: 245px;
+    float: right;
+    margin-right: 120px;
+  }
+  .block-tabs {
+    /*positioning the Tags area*/
+    border: 1px solid white;
+    margin-left: 250px;
+    margin-top: 15px;
+    width: 230px;
+    padding-right: 0;
+    float: left;
+  }
+  .block-tabs h3 {
+    /*The name TAGS*/
+    font-family: "Arial", Helvetica, sans-serif;
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+  .block-tabs ul {
+    /*Positioning The tags themselves*/
+    padding-left: 0;
+    margin-bottom: 10px;
+    margin-top: 0;
+  }
+  .block-tabs li {
+    /*Making the tags boxes look nice*/
+    display: inline;
+    font-family: "Arial", Helvetica, sans-serif;
+    font-size: 13px;
+    width: auto;
+    padding: 3px 17px;
+    margin-left: 0;
+    border: 1px solid rgb(137, 147, 159);
+    text-decoration: none;
+    background-color: #fff;
+    color: rgb(137, 147, 159);
+    line-height: 2;
+  }
+  .resources {
+    /*Positioning the resources area*/
+    border: 1px solid white;
+    margin-top: 15px;
+    margin-right: 10px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+    width: 310px;
+    padding-right: 3px;
+    float: left;
+  }
+  .resources h3 {
+    /*Styling the name Resources*/
+    font-family: "Arial", Helvetica, sans-serif;
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+  .resources ul {
+    /*Positioning the resource boxes*/
+    padding-left: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  .resources li {
+    /*Styling the resources boxes to look nice*/
+    display: inline;
+    font-family: "Arial", Helvetica, sans-serif;
+    font-size: 13px;
+    width: auto;
+    padding: 3px 75px 3px 2px;
+    margin-bottom: 10px;
+    margin-left: 0;
+    border: 1px solid rgb(137, 147, 159);
+    text-decoration: none;
+    background-color: #89939f;
+    color: #fff;
+    line-height: 2.1;
+  }
+  hr {
+    /*Styling the divider*/
+    margin-left: 250px;
+    width: 66.6%;
+  }
+  .important h3 {
+    /*Styling the The Important Stuff header*/
+    font-family: "Arial", Helvetica, sans-serif;
+    font-weight: lighter;
+    padding: 7px 10px 7px 13px;
+    background-color: rgb(144, 223, 0);
+    color: #414042;
+    margin-left: 250px;
+    margin-top: 20px;
+    width: 65%;
+  }
+  .deets h3 {
+    /*Styling the The Details header*/
+    font-family: "Arial", Helvetica, sans-serif;
+    font-weight: lighter;
+    padding: 7px 10px 7px 13px;
+    background-color: rgb(0, 192, 255);
+    color: #414042;
+    margin-left: 250px;
+    margin-top: 20px;
+    width: 65%;
+  }
+  .autre h3 {
+    /*Styling the The Other Stuff header*/
+    font-family: "Arial", Helvetica, sans-serif;
+    font-weight: lighter;
+    padding: 7px 10px 7px 13px;
+    background-color: rgb(255, 210, 0);
+    color: #414042;
+    margin-left: 250px;
+    margin-top: 20px;
+    width: 65%;
+  }
+  #thestuff {
+    /*Positioning and styling all the information boxes for all the sections*/
+    border: 1px solid white;
+    width: 50%;
+    margin-left: 300px;
+    font-family: "Arial", Helvetica, sans-serif;
+    padding-bottom: 10px;
+  }
+  #thestuff h4 {
+    /*Styling the titles of all the information boxes*/
+    color: rgb(65, 64, 66);
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  #thestuff p {
+    /*Styling the words of all the information boxes*/
+    color: rgb(137, 147, 159);
+    margin-top: 4px;
+  }
+}
