@@ -17,11 +17,16 @@ module ApplicationHelper
     link_to(name, '#', class: 'add_fields', data: { id: id, fields: fields.gsub("\n", "")})
   end
 
-  def css (controller)
+  def css_inject (controller, page)
     if controller == 'projects'
-      content_for(:head) { stylesheet_link_tag('bootstrap.css') }
-    else
-      content_for(:head) { stylesheet_link_tag 'skeleton.css' }
+      case page
+      when 'show'
+        'show'
+      when 'index'
+        'index'
+      when 'create'
+        'create'
+      end
     end
   end
 end

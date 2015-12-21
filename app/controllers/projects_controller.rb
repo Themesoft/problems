@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
+    @page = 'index'
     @projects = Project.all
 
     respond_to do |format|
@@ -14,6 +15,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @page = 'show'
     @project = Project.find(params[:id])
     @feature_order = (@project.feature_order || "0123").chars.map do |id|
       partial_from_id(id)
@@ -28,6 +30,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   # GET /projects/new.json
   def new
+    @page = 'create'
     @project = Project.new
     @project_attachment = @project.project_attachments.build
     @types = Type.all
@@ -48,7 +51,6 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
-
     @project = Project.new(project_params)
 
     respond_to do |format|
