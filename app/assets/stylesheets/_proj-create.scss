@@ -11,12 +11,12 @@
     position: absolute;
     text-align: left;
     top: 30px;
+    left: 0;
   }
   .nav {
     border: 1px solid white;
-    margin-left: -8px;
-    margin-top: -7px;
-    margin-right: -8px;
+    margin: 0;
+    padding: 0;
     padding-bottom: -5px;
     height: 100px;
     background-color: white;
@@ -240,10 +240,6 @@
     background-color: white;
     padding: 13px 0 7px 10px;
   }
-  .rboxes ul {
-    margin-left: -40px;
-    margin-right: 12px;
-  }
   .rboxes li {
     /*Styling the resources boxes to look nice*/
     display: block;
@@ -435,7 +431,7 @@
     vertical-align: top;
     height: 40px;
     max-height: 40px;
-    nax-width: 90%;
+    max-width: 90%;
     color: #777;
     border: 2px solid #c2c2c2;
     border-radius: 3px;
@@ -576,5 +572,12 @@
     color: #c2c2c2;
     width: 96%;
     display: block;
+  }
+
+  .project_type {
+
+    select {
+      width: 100%;
+    }
   }
 }
