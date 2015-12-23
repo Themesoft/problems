@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151221214737) do
+ActiveRecord::Schema.define(version: 20151222231142) do
 
   create_table "login_events", force: true do |t|
     t.integer  "user_id"
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 20151221214737) do
     t.integer  "status",            default: 0
     t.integer  "user_id"
     t.string   "feature_order"
+    t.string   "details_order"
+    t.string   "other_order"
   end
 
   create_table "projects_standards", id: false, force: true do |t|
@@ -83,7 +85,6 @@ ActiveRecord::Schema.define(version: 20151221214737) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "resource"
-    t.integer  "position"
   end
 
   create_table "standards", force: true do |t|

@@ -8,6 +8,7 @@ class Project < ActiveRecord::Base
   belongs_to :user
 
   accepts_nested_attributes_for :project_attachments, allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :slider_objects, allow_destroy: true, reject_if: :all_blank
 
   mount_uploader :featured_image, FeaturedImageUploader
 

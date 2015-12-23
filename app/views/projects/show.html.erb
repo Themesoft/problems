@@ -1,50 +1,53 @@
 <div class="info">
-     <div class="container">
+  <div class="container">
     <%= image_tag(@project.featured_image_url, id: 'picimg') %>
     <h2><%= @project.name %></h2>
     <div class="contri">
-      <h4>CONTRIBUTOR: <span>
-        <%= link_to @project.author_name, @project.author_link, :class => "supsection" %>
-      </span></h4>
+      <h4>CONTRIBUTOR:
+        <span>
+          <%= link_to @project.author_name, @project.author_link, :class => "supsection" %>
+        </span>
+      </h4>
     </div>
     <div class="type">
-      <h4>TYPE: <span class="subsection">
-        <%= @project.type %>
-      </span></h4>
+      <h4>TYPE:
+        <span class="subsection">
+          <%= @project.type %>
+        </span>
+      </h4>
     </div>
     <% if current_user && (current_user == @project.user || current_user.admin?) %>
-      <%= link_to 'Edit', edit_project_path(@project) %>
+    <%= link_to 'Edit', edit_project_path(@project) %>
     <% end %>
   </div>
-    <div class="block-tabs">
-      <h3>Tags</h3>
-      <ul>
-        <% @project.tags.each do |tag| %>
-          <li><%= tag.name %></li>
+  <div class="block-tabs">
+    <h3>Tags</h3>
+    <ul>
+      <% @project.tags.each do |tag| %>
+      <li><%= tag.name %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="resources">
+    <h3>Resources</h3>
+    <ul>
+      <% @project.project_attachments.each_with_index do |pa, i| %>
+      <li class="resource text-center">
+        <%= link_to pa.resource_url, target: "_blank" do %>
+        <%= "Resource #{i+1}" %>
         <% end %>
-      </ul>
-    </div>
-    <div class="resources">
-      <h3>Resources</h3>
-      <ul>
-        <% @project.project_attachments.each_with_index do |pa, i| %>
-            <li class="resource text-center">
-            <%= link_to pa.resource_url, target: "_blank" do %>
-              <%= "Resource #{i+1}" %>
-            <% end %>
-            </li>
-        <% end %>
-      </ul>
-    </div>
-    <hr>
+      </li>
+      <% end %>
+    </ul>
   </div>
+  <hr>
+</div>
 
-<!--CODE FOR THE IMAGE SLIDER GOES HERE-->
-
-  <div class="info">
-
-    <% @feature_order.each do |partial_name| %>
-      <%= render partial_name, locals: {:project => @project} %>
-    <% end %>
-  </div>
-  </div>
+<div class="info">
+  <% @feature_order.each do |partial_name| %>
+    <%= render partial_name, locals: {
+      :project => @project,
+      :details_fields => @details_fields,
+      :other_fields => @other_fields} %>
+  <% end %>
+</div>

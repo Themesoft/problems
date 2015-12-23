@@ -1,27 +1,15 @@
 
-// form: the main form that holds all the Attachments
-// fieldname: hidden field to store the position
-var OrderAttachments = function(mainForm, orderField) {
-  this.orderField = orderField;
-  this.mainForm = mainForm;
+// Organizers the elements with the identifier inside the surroudning form
+// surroundingForm: the parent class that holds all the forms
+// orderform: the hidden field that stores the order
+// identifier: the HTML attribute that holds the moveable object
+var Organzier = function(surroundingForm, orderField, identifier) {
+  this.identifier = identifier;
+  this.orderField = $(orderField);
+  this.surroundingForm = $(surroundingForm);
 
   this.order = function() {
-    var orderField = this.mainForm.find("[name='" + orderField + "']");
-    orderField.each(function(item, index, arr) {
-      $(item).val(index);
-    });
-}
-
-// mainForm: the master form. This is the root of the query
-// orderform: the hidden form that contaitns the order of the subforms
-// identifier: the HTML attribute that holds the ID for ordering
-var OrderMain = function(mainform, orderField, identifier) {
-  this.identifier = sectionsID;
-  this.orderField = orderField;
-  this.mainform = mainform;
-
-  this.order = function() {
-    var sections = mainForm.find('[' + this.identifier + ']');
+    var sections = surroundingForm.find('[' + this.identifier + ']');
     var positionString = "";
 
     sections.forEach(function(item, index, arr) {

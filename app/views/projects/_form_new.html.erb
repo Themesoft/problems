@@ -1,113 +1,115 @@
 <%= simple_form_for @project, :html => { :multipart => true } do |f| %>
-  <div class="main">
-    <aside>
-      <div class="dropdown">
-        <section class="container">
-          <div class="dropdown">
-            <%= f.input :status, label: 'Status', label: false, collection: Project::STATUSES.zip((0..2).to_a), input_html: { class: 'dropdown-select', name: 'one' } %>
-          </div>
-        </section>
-      </div>
-      <div class="save">
-        <%= f.button :submit, 'Create!', label: false, class: 'button button-primary', id: 'project-button' unless @edit %>
-        <%= f.hidden_field :feature_order %>
-      </div>
-      <div class="rresources">
-        <h2>Resources</h2>
-        <div id="rslide">
-          <div id="rimagepart">
-            <img id="rupload" src="http://www.myiconfinder.com/uploads/iconsets/3bfedbeee0930699d0cda9fa740170c3-cloud.png"/>
-          </div>
-          <div class="rboxes">
-            <p>Or choose a file...</p>
-            <ul>
-              <li><%= f.input :resource, as: :file, label: false %></li>
-              <li>Resource 2
-                <i class="fa fa-times-circle"></i>
-              </li>
-              <li>Resource 3
-                <i class="fa fa-times-circle"></i>
-              </li>
-              <li>Resource 4
-                <i class="fa fa-times-circle"></i>
-              </li>
-            </ul>
-          </div>
+<div class="main">
+  <aside>
+    <div class="dropdown">
+      <section class="container">
+        <div class="dropdown">
+          <%= f.input :status, label: 'Status', collection: Project::STATUSES.zip((0..2).to_a), input_html: { class: 'u-full-width' } %>
         </div>
-      </div>
-      <div class="tags">
-        <h2>Tags</h2>
-        <div class="place">
-          TAGS
-          <%= f.association :tags,label: false %>
-          <br/>
+      </section>
+    </div>
+    <div class="save">
+      <%= f.button :submit, 'SAVE', label: false, class: 'button button-primary', id: 'project-button' unless @edit %>
+      <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id} unless @edit %>
+      <%= f.hidden_field :feature_order %>
+    </div>
+    <div class="rresources">
+      <h2>Resources</h2>
+      <div id="rslide">
+        <%= f.simple_fields_for :project_attachments do |builder| %>
+        <div id="rimagepart">
+          <img id="rupload" src="http://www.myiconfinder.com/uploads/iconsets/3bfedbeee0930699d0cda9fa740170c3-cloud.png"/>
         </div>
-      </div>
-    </aside>
-    <section>
-      <% if @project.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@project.errors.count, "error") %> prohibited this user from being saved:</h2>
+        <div class="rboxes">
+          <p>Or choose a file...</p>
           <ul>
-          <% @project.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
+            <li><%= builder.input :resource, as: :file, label: false %></li>
+            <li>Resource 2
+              <i class="fa fa-times-circle"></i>
+            </li>
+            <li>Resource 3
+              <i class="fa fa-times-circle"></i>
+            </li>
+            <li>Resource 4
+              <i class="fa fa-times-circle"></i>
+            </li>
           </ul>
         </div>
-      <% end %>
-      <div class="important">
-        <h2>The Important Stuff
-          <i class="fa fa-arrows"></i>
-        </h2>
-        <div id="left">
-          <div id="inputs">
-            <form action="#" method="post" name="things">
-              <div id="fill">
-                NAME OF PROBLEM
-                <%= f.input :name,label: false %>
-                <br/>
-              </div>
-              <div id="fill">
-                CONTRIBUTOR NAME
-                <%= f.input :author_name,label: false %>
-                <br/>
-              </div>
-              <div id="big">
-                PROBLEM STATEMENT
-                <br/>
-                <%= f.input :problem_statement, placeholder: 'Give us the goods. What is the problem?',label: false %>
-                <br/>
-              </div>
-            </form>
+        <% end %>
+      </div>
+    </div>
+    <div class="tags">
+      <h2>Tags</h2>
+      <div class="place">
+        TAGS
+        <%= f.association :tags,label: false %>
+        <br/>
+      </div>
+    </div>
+  </aside>
+  <section>
+    <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %>
+        prohibited this user from being saved:</h2>
+      <ul>
+        <% @project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+    <div class="important">
+      <h2>The Important Stuff
+        <i class="fa fa-arrows"></i>
+      </h2>
+      <div id="left">
+        <div id="inputs">
+          <div id="fill">
+            NAME OF PROBLEM
+            <%= f.input :name,label: false %>
+            <br/>
+          </div>
+          <div id="fill">
+            CONTRIBUTOR NAME
+            <%= f.input :author_name,label: false %>
+            <br/>
+          </div>
+          <div id="big">
+            PROBLEM STATEMENT
+            <br/>
+            <%= f.input :problem_statement, placeholder: 'Give us the goods. What is the problem?',label: false %>
+            <br/>
           </div>
         </div>
-        <div id="middle">
-          <div id="inputs">
-            <form action="#" method="post" name="nameofproblem">
-              <div id="fill">
-                TYPE OF PROBLEM
-                <%= f.association :type,label: false %>
+      </div>
+      <div id="middle">
+        <div id="inputs">
+          <div id="fill">
+            TYPE OF PROBLEM
+            <%= f.association :type,label: false %>
+            <br/>
+          </div>
+          <div id="fill">
+            LINK TO AUTHOR'S PAGE
+            <%= f.input :author_link,label: false %>
+            <br/>
+          </div>
+          <div id="big">
+            HOOK
+            <br/>
+            <%= f.input :content, placeholder: 'What\'s the best way to get the audience on the edge of their seats?',label: false %>
                 <br/>
               </div>
-              <div id="fill">
-                LINK TO AUTHOR'S PAGE
-                <%= f.input :author_link,label: false %>
-                <br/>
-              </div>
-              <div id="big">
-                HOOK
-                <br/>
-                <%= f.input :content, placeholder: 'What\'s the best way to get the audience on the edge of their seats?',label: false %>
-                <br/>
-              </div>
-            </form>
           </div>
         </div>
         <div id="right">
           FEATURED IMAGE
+          <%= f.hidden_field :featured_image_cache %>
           <img id="picimgb" src="http://innosoft.com.sa/wp-content/uploads/2014/03/placeholder.png"/>
           <div class="bicons">
             <p>Filename.ext
+              <%= f.input :featured_image, as: :file, label: "Featured Image" %>
               <i class="fa fa-trash-o"></i>
               <i class="fa fa-pencil"></i>
               <i class="fa fa-cloud-upload"></i>
@@ -124,48 +126,40 @@
         <i class="icon-move"></i>
         <div id="left">
           <div id="medium">
-            <form action="#" method="post" name="things">
               <div id="inputs">
                 HISTORY
                 <%= f.input :history,label: false  %>
                 <br/>
               </div>
-            </form>
           </div>
           <div id="medium">
-            <form action="#" method="post" name="things">
               <div id="inputs">
                 WHY WILL WE LOVE IT?
                 <%= f.input :why,label: false %>
                 <br/>
               </div>
-            </form>
           </div>
         </div>
         <div id="middle">
           <div id="medium">
-            <form action="#" method="post" name="things">
               <div id="inputs">
                 DURATION
                 <%= f.input :duration,label: false %>
                 <br/>
               </div>
-            </form>
           </div>
           <div id="medium">
-            <form action="#" method="post" name="things">
+
               <div id="inputs">
                 STANDARDS
                 <%= f.association :standards,label: false %>
                 <br/>
               </div>
-            </form>
+
           </div>
         </div>
         <div id="right-short">
           <div id="medium">
-            <form action="#" method="post" name="things">
-            </form>
           </div>
         </div>
       </div>
@@ -177,36 +171,36 @@
         </h2>
         <div id="left">
           <div id="medium">
-            <form action="#" method="post" name="things">
+
               <div id="inputs">
                 LAUNCH METHOD
                 <%= f.input :launch_method,label: false %>
                 <br/>
               </div>
-            </form>
+
           </div>
           <div id="medium">
-            <form action="#" method="post" name="things">
+
               <div id="inputs">
                 TEACHER MOVES
                 <%= f.input :teacher_moves,label: false %>
                 <br/>
               </div>
-            </form>
+
           </div>
         </div>
         <div id="middle">
           <div id="medium">
-            <form action="#" method="post" name="things">
+
               <div id="inputs">
                 HISTORY
                 <%= f.input :history,label: false %>
                 <br/>
               </div>
-            </form>
+
           </div>
           <div id="medium">
-            <form action="#" method="post" name="things">
+
               <div id="inputs">
                 PATHWAYS
                 <i class="fa fa-arrows"></i>
@@ -214,12 +208,12 @@
                 <%= f.input :pathways,label: false %>
                 <br/>
               </div>
-            </form>
+
           </div>
         </div>
         <div id="right">
           <div id="mediumlong">
-            <form action="#" method="post" name="things">
+
               <div id="inputs">
                 EXTENSIONS
                 <i class="fa fa-arrows"></i>
@@ -227,10 +221,10 @@
                 <%= f.input :extensions,label: false %>
                 <br/>
               </div>
-            </form>
+
           </div>
           <div id="mediumlong">
-            <form action="#" method="post" name="things">
+
               <div id="inputs">
                 HINTS
                 <i class="fa fa-arrows"></i>
@@ -238,7 +232,7 @@
                 <%= f.input :hints ,label: false %>
                 <br/>
               </div>
-            </form>
+
           </div>
         </div>
       </div>
@@ -252,13 +246,12 @@
             <img id="supload" src="http://www.myiconfinder.com/uploads/iconsets/3bfedbeee0930699d0cda9fa740170c3-cloud.png"/>
           </div>
           <div id="caption">
-            <form action="#" method="post" name="things">
+
               <div id="inputs">
                 CAPTION
                 <input name="contributor" type="text" value="describe">
                 <br/>
               </div>
-            </form>
           </div>
         </div>
         <div id="slide">
@@ -267,13 +260,13 @@
             <img id="supload" src="http://www.myiconfinder.com/uploads/iconsets/3bfedbeee0930699d0cda9fa740170c3-cloud.png"/>
           </div>
           <div id="caption">
-            <form action="#" method="post" name="things">
+
               <div id="inputs">
                 CAPTION
                 <input name="contributor" type="text" value="describe">
                 <br/>
               </div>
-            </form>
+
           </div>
         </div>
         <div id="slide">
@@ -282,13 +275,13 @@
             <img id="supload" src="http://www.myiconfinder.com/uploads/iconsets/3bfedbeee0930699d0cda9fa740170c3-cloud.png"/>
           </div>
           <div id="caption">
-            <form action="#" method="post" name="things">
+
               <div id="inputs">
                 CAPTION
                 <input name="contributor" type="text" value="describe">
                 <br/>
               </div>
-            </form>
+
           </div>
         </div>
         <div id="slide">
@@ -297,13 +290,16 @@
             <img id="supload" src="http://www.myiconfinder.com/uploads/iconsets/3bfedbeee0930699d0cda9fa740170c3-cloud.png"/>
           </div>
           <div id="caption">
-            <form action="#" method="post" name="things">
+
               <div id="inputs">
                 CAPTION
-                <input name="contributor" type="text" value="describe">
+              <%= f.simple_fields_for :slider_objects do |builder| %>
+                <%= builder.input :resource, as: :file, label: false %>
+                <%= builder.input :description, label: false  %>
+              <% end %>
                 <br/>
               </div>
-            </form>
+
           </div>
         </div>
         <div id="slide">
@@ -312,13 +308,13 @@
             <img id="supload" src="http://www.myiconfinder.com/uploads/iconsets/3bfedbeee0930699d0cda9fa740170c3-cloud.png"/>
           </div>
           <div id="caption">
-            <form action="#" method="post" name="things">
+
               <div id="inputs">
                 CAPTION
                 <input name="contributor" type="text" value="describe">
                 <br/>
               </div>
-            </form>
+
           </div>
         </div>
       </div>

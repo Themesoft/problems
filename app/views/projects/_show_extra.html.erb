@@ -1,17 +1,11 @@
 <div class="autre" movement="2">
   <h3>The Other Stuff</h3>
-  <div id="thestuff">
-    <h4>Pathways</h4>
-    <p><%= @project.pathways %></p>
-    <p></p>
-  </div>
-  <div id="thestuff">
-    <h4>Hints</h4>
-    <p><%= @project.hints %></p>
-  </div>
-
-  <div id="thestuff">
-    <h4>Teacher Moves</h4>
-    <p><%= @project.teacher_moves %></p>
-  </div>
+  <% @other_fields.each do |field_tuple| %>
+    <% if field_tuple.content.length > 0 %>
+      <div id="thestuff">
+        <h4><%= field_tuple.label %></h4>
+        <%= simple_format(field_tuple.content, sanitize: false) %>
+      </div>
+    <% end %>
+  <% end %>
 </div>

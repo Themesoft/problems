@@ -2,10 +2,10 @@
   <h3>The Important Stuff</h3>
   <div id="thestuff">
     <h4>Problem Statement</h4>
-    <p><%= @project.problem_statement %></p>
+    <%= simple_format(@project.problem_statement, sanitize: false) %>
   </div>
   <div id="thestuff">
     <h4>Hook</h4>
-    <p><%= @project.why %></p>
+    <%= simple_format(@project.content, sanitize: false) %>
   </div>
 </div>

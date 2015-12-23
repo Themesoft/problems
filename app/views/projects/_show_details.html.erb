@@ -1,19 +1,11 @@
 <div class="deets" movement="1">
   <h3>The Details</h3>
-  <div id="thestuff">
-    <h4>History</h4>
-    <p><%= @project.history %></p>
-  </div>
-  <div id="thestuff">
-    <h4>Standards</h4>
-    <p>
-      <% if @project.standards.length > 0 %>
-        <% @project.standards.each do |standard| %>
-          <%= standard %>
-        <% end %>
-      <$ else $>
-        No standards defined
+  <% @details_fields.each do |field_tuple| %>
+    <% if field_tuple.content.length > 0 %>
+      <div id="thestuff">
+        <h4><%= field_tuple.label %></h4>
+        <%= simple_format(field_tuple.content, sanitize: false) %>
+      </div>
       <% end %>
-    </p>
-  </div>
+  <% end %>
 </div>

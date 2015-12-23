@@ -45,7 +45,6 @@ class SliderObjectsController < ApplicationController
   def destroy
     @slider_object.destroy
     respond_with(@slider_object)
-    end
   end
 
   private
@@ -56,6 +55,6 @@ class SliderObjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def slider_object_params
-      params.require(:slider_objects).permit(:project_id, :description, :file_name)
+      params.require(:slider_object).permit(:project_id, :description, :file_name, :resource, :position)
     end
 end
